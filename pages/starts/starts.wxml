@@ -1,0 +1,14 @@
+<loading hidden="{{!loading}}">
+  加载中...
+</loading>
+
+<view class='container'>
+    <view class="section">
+        <view class="section__title">地区选择器</view>
+        <picker bindchange="bindPickerChange" value="{{indexL}}" range="{{arrayL}}">
+        <view class="picker">
+            当前选择：{{arrayL[indexL]}}
+        </view>
+        </picker>
+    </view>
+</view>

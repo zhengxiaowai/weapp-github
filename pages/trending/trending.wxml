@@ -21,7 +21,7 @@
                 <view class='repo-info'>
                     {{item.language}}
                     <text> • </text>
-                    <text>{{item.forks}} forks todys</text>
+                    <text>{{item.stargazers_count}} starts todys</text>
                     <text> • </text>
                     <text>Built by </text>
                     <text class='author'>{{item.owner.login}}</text>       
