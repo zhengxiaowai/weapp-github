@@ -1,0 +1,31 @@
+.repo-item {
+    padding: 30rpx 30rpx 30rpx 30rpx;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+
+.repo-title {
+    color: #4078C0;
+    margin-bottom: 16rpx;
+}
+.repo-desc {
+    font-size: 28rpx;
+    color: #666;
+    margin-bottom: 16rpx;
+}
+
+.repo-info {
+    color: #888;
+    font-size: 26rpx;
+    margin-bottom: 16rpx;
+    position: relative;
+}
+
+.avatar-img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin-top: -5rpx;
+    margin-left: 10rpx;
+
+}

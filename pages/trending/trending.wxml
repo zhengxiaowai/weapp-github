@@ -1,0 +1,34 @@
+<loading hidden="{{!loading}}">
+  加载中...
+</loading>
+
+<view class="container">
+    <block wx:for="{{repos}}">
+
+        <view class='repo-item flex-container'>
+            <!--<view class='avatar'>
+                <image class='avatar-img' src="{{item.owner.avatar_url}}"/>
+            </view>-->
+            <view class='repo'>
+                <view class='repo-title'>
+                    <text class='author'>{{item.owner.login}}</text>
+                    <text>/</text>
+                    <text class='repo-name'>{{item.name}}</text>
+                </view>
+                <view class='repo-desc'>
+                    {{item.description}}
+                </view>
+                <view class='repo-info'>
+                    {{item.language}}
+                    <text> • </text>
+                    <text>{{item.forks}} forks todys</text>
+                    <text> • </text>
+                    <text>Built by </text>
+                    <text class='author'>{{item.owner.login}}</text>       
+                    <image class='avatar-img' src="{{item.owner.avatar_url}}"/>
+                </view>
+            </view>
+        </view>
+
+    </block>
+</view>

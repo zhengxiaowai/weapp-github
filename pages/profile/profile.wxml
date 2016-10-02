@@ -1,0 +1,27 @@
+<view wx:if="{{!has_auth}}" class="container">
+    <form bindsubmit="formSubmit" class='login-form'>
+        <view class='avatar section'>
+            <image class='avatar-image' mode='aspectFit' src="../../images/profile.png" />
+        </view>
+        <view class='account section'>
+            <input name="username" class='input-username center auth' placeholder="username" />
+            <input name="password" class='input-password center auth' type='password' placeholder="password" />
+        </view>
+        <view class='section switch-area center'>
+            <view class='switch-warp'>
+                <label class='switch-label' >记住密码</label>
+                <switch name='keepSecrect' />
+            </view>
+        </view>
+        <view class='section center'>
+            <button formType="submit" class='login-btn' loading="{{loading}}" disabled="{{disableBtn}}">登录</button>
+        </view>
+    </form>
+    <modal title='错误' no-cancel="true" bindconfirm="confirmModal" hidden="{{modalHidden}}">
+        {{errorMessage}}
+    </modal>
+</view>
+
+<view wx:if="{{has_auth}}" class="container">
+    <text>认证了</text>
+</view>

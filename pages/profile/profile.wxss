@@ -1,0 +1,43 @@
+.avatar-image {
+    width: 128px;
+    height: 128px;
+}
+
+.login-form {
+    margin: 30rpx;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.auth {
+    border-bottom: 1px solid #c7c7c7;
+}
+
+
+.center {
+    display: block;
+    margin: 10px auto;
+    width: 60%;
+    font-size: 30rpx;
+}
+
+switch {
+    float: right;
+}
+
+.switch-warp {
+    height: 40px;
+    position: relative;
+}
+
+.switch-label {
+    position: absolute;
+    top: 13%;
+}
+
+.login-btn {
+    color:#FFFFFF;
+    background-color:#1AAD19;
+}

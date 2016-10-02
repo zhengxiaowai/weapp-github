@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/trending/trending",
+    "pages/starts/starts",
+    "pages/profile/profile"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color":"#ccc",
+    "selectedColor":"black",
+    "backgroundColor":"#EEEEEE",
+    "borderStyle":"white",
+    "list": [{
+      "pagePath": "pages/trending/trending",
+      "text": "Treding",
+      "iconPath":"images/trending.png",
+      "selectedIconPath":"images/trending.png"
+    }, {
+      "pagePath": "pages/starts/starts",
+      "text": "Starts",
+      "iconPath":"images/starts.png",
+      "selectedIconPath":"images/startsHL.png"
+    }, {
+      "pagePath": "pages/profile/profile",
+      "text": "Profile",
+      "iconPath":"images/profile.png",
+      "selectedIconPath":"images/profileHL.png"
+    }]
+  }
+}
