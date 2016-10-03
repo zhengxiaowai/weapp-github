@@ -32,6 +32,5 @@
       "iconPath":"images/profile.png",
       "selectedIconPath":"images/profileHL.png"
     }]
-  },
-  "debug": true
+  }
 }

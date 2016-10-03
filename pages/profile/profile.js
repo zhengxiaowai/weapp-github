@@ -1,6 +1,7 @@
 var utils = require("../../utils/util.js");
 
 var GITHUB_AUTH_URL = 'https://api.github.com';
+var GITHUB_USER_DETAIL_URL = 'https://api.github.com/user';
 
 Page({
   data:{
@@ -9,7 +10,8 @@ Page({
     user: {},
     modalHidden: true,
     errorMessage: '',
-    has_auth: false
+    has_auth: false,
+    userDetail: {}
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -25,6 +27,16 @@ Page({
         has_auth: true
       })
     }
+
+    // user detail
+    var userDetail = wx.getStorageSync('userDetail');
+    if (!userDetail) {
+      this.fetchUserDetail(GITHUB_USER_DETAIL_URL);
+    } else {
+      this.setData({
+        userDetail: JSON.parse(userDetail)
+      })
+    }
   },
   onReady:function(){
     // 页面渲染完成
@@ -37,6 +49,28 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  fetchUserDetail: function(url) {
+    var basic = utils.readDataFromStorage('user').basic_auth;
+
+    return fetch(url, {
+      headers: {
+        Authorization: 'Basic ' + basic
+      }
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error('OptionError');
+      }
+
+      return res.json()
+    }).then(json => {
+      this.setData({
+        userDetail: json
+      })
+      utils.saveDataToStorage('userDetail', json);
+    }).catch(e => {
+      throw e;
+    })
   },
   controlOps(status) {
     if (status === 'enable') {

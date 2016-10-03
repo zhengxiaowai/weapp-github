@@ -1,3 +1,69 @@
+/* 信息展示界面 */
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-base-top {
+    flex-direction: row;
+}
+
+.flex-base-bottom {
+    margin: 5px 0px;
+}
+
+.flex-warp-right {
+    flex-direction: column;
+}
+
+
+.flex-warp-right-item {
+    flex-direction: column;
+    
+}
+
+.flex-msg-info {
+    flex-direction: row;
+}
+
+.user-msg {
+    padding: 20rpx;
+    border-bottom: 1px solid #ddd;
+}
+
+.msg-avatar {
+    width: 110px;
+    height: 110px;
+    margin-right: 15px;
+}
+
+.msg-info-name {
+    font-size: 17px;
+    font-weight: bold;
+    color: #333;
+}
+
+.little-text {
+    font-size: 14px;
+    color: #767676;
+}
+
+.icon-12px {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+}
+
+.text-info {
+    font-size: 12px
+}
+
+.msg-info-other {
+    margin-top: 20rpx;
+}
+
+/* 登录界面 */
 .avatar-image {
     width: 128px;
     height: 128px;
@@ -14,7 +80,6 @@
 .auth {
     border-bottom: 1px solid #c7c7c7;
 }
-
 
 .center {
     display: block;

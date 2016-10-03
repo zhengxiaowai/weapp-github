@@ -17,11 +17,45 @@
             <button formType="submit" class='login-btn' loading="{{loading}}" disabled="{{disableBtn}}">登录</button>
         </view>
     </form>
-    <modal title='错误' no-cancel="true" bindconfirm="confirmModal" hidden="{{modalHidden}}">
-        {{errorMessage}}
-    </modal>
 </view>
 
 <view wx:if="{{has_auth}}" class="container">
-    <text>认证了</text>
+    <view class='flex user-msg'>
+        <view class='flex flex-base-top'>
+            <view class='msg-avatar-view flex-warp-left'>
+                <image class='msg-avatar' src="{{userDetail.avatar_url}}"  mode='aspectFit'/>
+            </view>
+            <view class='flex msg-info flex-warp-right'>
+                <!--login and name-->
+                <view class='flex-warp-right-item msg-info-names'>
+                    <view class='msg-info-name'>{{userDetail.name}}</view>
+                    <view class='msg-info-login little-text'>{{userDetail.login}}</view>
+                </view>
+                <view class=' flex flex-warp-right-item msg-info-other'>
+                    <view class=' flex msg-info-company flex-msg-info'>
+                        <image class='company-image icon-12px' src="../../images/company.png" mode='aspectFit' />
+                        <text class="company-text text-info">{{userDetail.company}}</text>
+                    </view>
+                    <view class='msg-info-location flex-msg-info'>
+                        <image class='location-image icon-12px' src="../../images/location.png" mode='aspectFit' />
+                        <text class="location-text text-info">{{userDetail.location}}</text>
+                    </view>
+                    <view class='msg-info-email flex-msg-info'>
+                        <image class='email-image icon-12px' src="../../images/mail.png" mode='aspectFit' />
+                        <text class="email-text text-info">{{userDetail.email}}</text>
+                    </view>
+                    <view class='msg-info-link flex-msg-info'>
+                        <image class='link-image icon-12px' src="../../images/link.png" mode='aspectFit' />
+                        <text class="link-text text-info">{{userDetail.blog}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='flex flex-base-bottom'>
+            <text class="msg-bio little-text">2/3 Pythoner + 1/3 Jser = 1/2 Web Developer</text>
+        </view>
+    </view>
 </view>
+<modal title='错误' no-cancel="true" bindconfirm="confirmModal" hidden="{{modalHidden}}">
+    {{errorMessage}}
+</modal>
