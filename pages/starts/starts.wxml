@@ -3,12 +3,46 @@
 </loading>
 
 <view class='container'>
-    <view class="section">
-        <view class="section__title">地区选择器</view>
+    <!--这里的 picker 好像有问题能，只能选择前面四个-->
+    <view class="section picker-section">
         <picker bindchange="bindPickerChange" value="{{indexL}}" range="{{arrayL}}">
-        <view class="picker">
-            当前选择：{{arrayL[indexL]}}
-        </view>
+        <text class="picker-show">
+            选择语言：{{arrayL[indexL]}}
+        </text>
         </picker>
     </view>
+
+    <!--start 的项目-->
+    <scroll-view class='section started-repos' style="height: 100%;" scroll-y="true" bindscroll="scroll" bindscrolltolower="loadMore">
+        <block wx:for="{{startedRepos}}">
+            <view class='repo-item flex'>
+                <view class='flex-warp-top flex-flex'>
+                    <image class='flex-warp-left repo-image icon-book' src='../../images/book_32px.png' mode='aspectFit' />
+                    <text class='flex-warp-right repo-name'>{{item.full_name}}</text>
+                </view>
+                <view class='flex-warp-mid'>
+                    {{item.description}}
+                </view>
+                <view class='flex-warp-bottom repo-starts-count flex-flex'>
+                    {{item.language}}
+                    <text class='point'>•</text>
+                    <image class='start-image icon-start flex-warp-left' src='../../images/startsHL.png' />
+                    <text class='flex-warp-right'>{{item.stargazers_count}}</text>
+                </view>
+            </view>
+        </block>
+        <view class="load-more-wrap">
+            <block wx:if="{{hasMore}}">
+            <view class="load-content">
+                <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+            </view>
+            </block>
+
+            <block wx:else>
+            <view class="load-content">
+                <text>没有更多内容了</text>
+            </view>
+      </block>
+    </view>
+    </scroll-view>
 </view>

@@ -1,0 +1,76 @@
+.picker-section {
+    border-bottom: 1px solid #c7c7c7;
+    padding: 0rpx 10rpx 10rpx 10rpx;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flex-flex {
+    display: flex;
+    align-items: center;
+}
+
+.flex-warp-top {
+    margin-bottom: 16rpx;
+    color: #4078C0;
+}
+
+.flex-warp-mid {
+    font-size: 28rpx;
+    color: #666;
+    margin-bottom: 16rpx;
+}
+
+.flex-warp-bottom {
+    justify-content: flex-end;
+    font-size: 26rpx;
+    color: #888;
+}
+
+.flex-warp-right {
+    margin-left: 10rpx;
+}
+
+.point {
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}
+
+.starts-image {
+    margin-left: 10rpx;
+}
+
+.icon-book {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-start {
+    width: 20px;
+    height: 20px;
+}
+
+.repo-item {
+    padding: 30rpx;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.load-more-wrap{
+  text-align: center;
+  padding: 10px 20px 20px 20px;
+}
+
+.load-content{
+  padding: 5px;
+  color: #666;
+}
+
+.loading-text{
+    font-size: 26rpx;
+    display: inline-block;
+    vertical-align: middle;
+}

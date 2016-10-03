@@ -23,7 +23,24 @@ function b64EncodeUnicode(str) {
     }));
 }
 
+function saveDataToStorage(key, data) {
+  if (!(data instanceof String)) {
+    data = JSON.stringify(data);
+  }
+  wx.setStorageSync(key, data);
+}
+
+function readDataFromStorage(key) {
+  var content = wx.getStorageSync(key);
+
+  if (!content) return '';
+
+  return JSON.parse(content);
+}
+
 module.exports = {
   getWeekDate: getWeekDate,
-  b64EncodeUnicode: b64EncodeUnicode
+  b64EncodeUnicode: b64EncodeUnicode,
+  saveDataToStorage: saveDataToStorage,
+  readDataFromStorage: readDataFromStorage
 }
