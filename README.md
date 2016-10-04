@@ -6,7 +6,7 @@
 - Trending
 - 你 start 过的 repo
 - 个人信息和你自己的 repo
-- 给予 basic 的登录
+- 基于 basic 的登录
 
 实现的 Trending 和官方的 Trending 不一样，因为 github 没有开放该接口，这里只是使用搜索功能做的一个在一周内创建同时 start 数量最多项目。
 
