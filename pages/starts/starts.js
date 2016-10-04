@@ -163,9 +163,15 @@ Page({
       return res.json()
     }).then(json => {
       var newData = json;
+      var pickKeys = ['full_name', 'stargazers_count', 'description', 'language'];
+      var pickData = utils.pickKvFromArray(json, pickKeys);
+
       if (more) {
           newData = this.data.startedRepos;
-          newData.push.apply(newData, json);
+          concatData = pickData;
+          newData.push.apply(newData, concatData);
+      } else {
+        newData = pickData;
       }
 
       wx.setStorageSync('starts', JSON.stringify(newData));

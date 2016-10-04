@@ -11,9 +11,7 @@
             </view>-->
             <view class='repo'>
                 <view class='repo-title'>
-                    <text class='author'>{{item.owner.login}}</text>
-                    <text>/</text>
-                    <text class='repo-name'>{{item.name}}</text>
+                    <text class='repo-name'>{{item.full_name}}</text>
                 </view>
                 <view class='repo-desc'>
                     {{item.description}}

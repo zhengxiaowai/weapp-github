@@ -24,11 +24,15 @@ Page({
                 return res.json();
             })
             .then(json => {
-                wx.setStorageSync('trending:' + last7date, JSON.stringify(json));
+                var pickKeys = ['full_name', 'stargazers_count', 'description', 'language'];
+                var pickData = utils.pickKvFromArray(json.items, pickKeys);
+
                 this.setData({
-                    repos: json.items,
+                    repos: pickData,
                     loading: false
                 })
+
+                utils.saveDataToStorage('trending:' + last7date, pickData);
             })
             .catch(e => {
                 console.error(e);
@@ -36,7 +40,7 @@ Page({
       } else {
           return Promise.resolve(JSON.parse(trendingData)).then(json => {
               this.setData({
-                    repos: json.items,
+                    repos: json,
                     loading: false
                 })
           })

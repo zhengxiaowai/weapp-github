@@ -38,9 +38,32 @@ function readDataFromStorage(key) {
   return JSON.parse(content);
 }
 
+function pickKvFromArray(array, keys) {
+  if (!array instanceof Array || !keys instanceof Array) {
+    return {}
+  }
+
+  return array.map(item => {
+    var pickData = {};
+
+    keys.forEach(key => {
+      var value = item[key];
+
+      if (value) {
+        pickData[key] = value;
+      }
+
+    })
+
+    return pickData;
+  })
+}
+
+
 module.exports = {
   getWeekDate: getWeekDate,
   b64EncodeUnicode: b64EncodeUnicode,
   saveDataToStorage: saveDataToStorage,
-  readDataFromStorage: readDataFromStorage
+  readDataFromStorage: readDataFromStorage,
+  pickKvFromArray: pickKvFromArray
 }

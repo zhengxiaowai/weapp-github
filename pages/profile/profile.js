@@ -115,25 +115,16 @@ Page({
       return res.json()
     }).then(json => {
       var newData = []
-      
+      var pickData = utils.pickKvFromArray(json, ['full_name', 'private']);
+
       if (more) {
         // 在有更多数据的情况下
         // 需要先和之前的数据拼接起来
         newData = this.data.myRepos;
-        concatData = json.map(item => {
-          var pickData = {}
-          pickData.full_name = item.name;
-          pickData.private = item.private;
-          return pickData;
-        })
+        concatData = pickData;
         newData.push.apply(newData, concatData);
       } else {
-        newData = json.map(item => {
-          var pickData = {}
-          pickData.full_name = item.name;
-          pickData.private = item.private;
-          return pickData;
-        })
+        newData = pickData;
       }
 
       this.setData({
@@ -219,7 +210,6 @@ Page({
       json.basic_auth = basic;
       wx.setStorageSync('user', JSON.stringify(json));
       this.controlOps('enable');
-      console.log(json);
       wx.redirectTo({
         url: 'profile'
       })
