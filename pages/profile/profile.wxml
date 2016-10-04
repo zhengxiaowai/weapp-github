@@ -55,6 +55,38 @@
             <text class="msg-bio little-text">2/3 Pythoner + 1/3 Jser = 1/2 Web Developer</text>
         </view>
     </view>
+
+    <!-- repositories -->
+    <scroll-view class='flex my-repositories' style="height: 100%;" scroll-y="true" bindscrolltolower="scrolltolowers" bindscroll="scroll">
+        <block wx:for="{{myRepos}}">
+            <view wx:if="{{item.private === true}}" class="flex repo-item lock-item">
+                <!-- show lock icon-->
+                <image class='repo-item-images' src='../../images/lock.png' mode="aspectFit" />
+                <text class='repo-path'>{{item.full_name}}</text> 
+            </view>
+            <view wx:else class="flex repo-item">
+                <!-- show book icon-->
+                <image class='repo-item-images' src='../../images/book.png' mode="aspectFit" />
+                <text class='repo-path'>{{item.full_name}}</text> 
+            </view>
+
+        </block>
+        <view class="load-more-wrap">
+            <block wx:if="{{hasMore}}">
+            <view class="load-content">
+                <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+            </view>
+            </block>
+
+            <block wx:else>
+            <view class="load-content">
+                <text>没有更多内容了</text>
+            </view>
+            </block>
+        </view>
+        
+
+    </scroll-view>
 </view>
 <modal title='错误' no-cancel="true" bindconfirm="confirmModal" hidden="{{modalHidden}}">
     {{errorMessage}}

@@ -3,6 +3,10 @@
     border-bottom: 1px solid #c7c7c7;
 }
 
+.repo-item:last-child {
+    border-bottom: none;
+}
+
 
 .repo-title {
     color: #4078C0;

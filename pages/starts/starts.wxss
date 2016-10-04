@@ -58,19 +58,3 @@
     padding: 30rpx;
     border-bottom: 1px solid #c7c7c7;
 }
-
-.load-more-wrap{
-  text-align: center;
-  padding: 10px 20px 20px 20px;
-}
-
-.load-content{
-  padding: 5px;
-  color: #666;
-}
-
-.loading-text{
-    font-size: 26rpx;
-    display: inline-block;
-    vertical-align: middle;
-}

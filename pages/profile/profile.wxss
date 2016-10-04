@@ -28,7 +28,7 @@
 }
 
 .user-msg {
-    padding: 20rpx;
+    padding: 10rpx;
     border-bottom: 1px solid #ddd;
 }
 
@@ -62,6 +62,41 @@
 .msg-info-other {
     margin-top: 20rpx;
 }
+
+/* 个人产库 */
+.my-repositories {
+    margin-top: 27rpx;
+    flex-direction: column;
+}
+
+.repo-item {
+    margin: 0rpx 10rpx;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1rpx solid #eee;
+}
+
+.repo-item:last-child {
+    border-bottom: 1rpx solid #eee;
+}
+
+.lock-item {
+    background-color: #fff9ea;
+}
+
+.repo-item-images {
+    width: 32px;
+    height: 24px;
+    padding: 15rpx;
+
+}
+
+.repo-path {
+    color: #4078c0;
+    font-size: 14px;
+}
+
+
 
 /* 登录界面 */
 .avatar-image {

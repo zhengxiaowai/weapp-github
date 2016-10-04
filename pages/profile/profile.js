@@ -1,54 +1,152 @@
 var utils = require("../../utils/util.js");
+var parseLinkHeader = require('../../utils/parse-link-header.js');
 
+/* APIs */
 var GITHUB_AUTH_URL = 'https://api.github.com';
 var GITHUB_USER_DETAIL_URL = 'https://api.github.com/user';
+var GITHUB_USER_REPOS_URL = 'https://api.github.com/user/repos?sort=created';
 
 Page({
   data:{
     loading: false,
+    hasMore: true,
     disableBtn: false,
     user: {},
     modalHidden: true,
     errorMessage: '',
     has_auth: false,
-    userDetail: {}
+    userDetail: {},
+    myRepos: [],
+    turnToAuth: false,
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-    userInfo = wx.getStorageSync('user');
-    if (userInfo === '') {
-      // 无登录
-      this.setData({
-        options: options,
-      })
-    } else {
-      this.setData({
-        user: JSON.parse(userInfo),
-        has_auth: true
-      })
-    }
-
-    // user detail
-    var userDetail = wx.getStorageSync('userDetail');
-    if (!userDetail) {
-      this.fetchUserDetail(GITHUB_USER_DETAIL_URL);
-    } else {
-      this.setData({
-        userDetail: JSON.parse(userDetail)
-      })
-    }
+    this.initData();
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
+    var turnToAuth = this.data.turnToAuth;
+    if (turnToAuth){
+      this.initData();
+      this.setData({
+        turnToAuth: false
+      })
+    }
   },
   onHide:function(){
     // 页面隐藏
   },
   onUnload:function(){
     // 页面关闭
+  },
+  initData: function() {
+    userInfo = wx.getStorageSync('user');
+    if (userInfo != '') {
+      this.setData({
+        user: JSON.parse(userInfo),
+        has_auth: true
+      })
+
+      // user detail
+      var userDetail = wx.getStorageSync('userDetail');
+      if (!userDetail) {
+        this.fetchUserDetail(GITHUB_USER_DETAIL_URL);
+      } else {
+        this.setData({
+          userDetail: JSON.parse(userDetail)
+        })
+      }
+
+      // my repos
+      var myRepos = utils.readDataFromStorage('myRepos');
+      if (!myRepos) {
+        this.fetchYourRepos(GITHUB_USER_REPOS_URL);
+      } else {
+        this.setData({
+          myRepos: myRepos
+        })
+      }
+    }
+
+
+  },
+  scroll: function () {
+    
+  },
+  scrolltolowers: function(){
+    link = utils.readDataFromStorage('yourRepolink');
+    var hasMore = false;
+
+    if (link.next) {
+      this.fetchYourRepos(link.next, true);
+      hasMore = true;
+    }
+
+    this.setData({
+      hasMore: hasMore
+    })
+  },
+  fetchYourRepos: function(url, more) {
+    // 直接获取用户的 repos
+    // 不需要做其他的校验
+    if (!more) {
+      more = false;
+    }
+    var basic = utils.readDataFromStorage('user').basic_auth;
+
+    return fetch(url, {
+      headers: {
+        Authorization: 'Basic ' + basic
+      }
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error('网络故障');
+      }
+
+      // 处理下一页链接
+      prasedLink = parseLinkHeader(res.headers.get('Link'));
+      
+      // 这里存到缓存中
+      // 因为在使用缓存数据时候 data 数据是空的
+      utils.saveDataToStorage('yourRepolink', prasedLink)
+
+      return res.json()
+    }).then(json => {
+      var newData = []
+      
+      if (more) {
+        // 在有更多数据的情况下
+        // 需要先和之前的数据拼接起来
+        newData = this.data.myRepos;
+        concatData = json.map(item => {
+          var pickData = {}
+          pickData.full_name = item.name;
+          pickData.private = item.private;
+          return pickData;
+        })
+        newData.push.apply(newData, concatData);
+      } else {
+        newData = json.map(item => {
+          var pickData = {}
+          pickData.full_name = item.name;
+          pickData.private = item.private;
+          return pickData;
+        })
+      }
+
+      this.setData({
+        myRepos: newData
+      })
+
+      utils.saveDataToStorage('myRepos', newData);
+    }).catch(e => {
+      this.setData({
+        modalHidden: false,
+        errorMessage: e.message
+      })
+    })
   },
   fetchUserDetail: function(url) {
     var basic = utils.readDataFromStorage('user').basic_auth;

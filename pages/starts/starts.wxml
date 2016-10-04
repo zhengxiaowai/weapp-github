@@ -17,7 +17,7 @@
         <block wx:for="{{startedRepos}}">
             <view class='repo-item flex'>
                 <view class='flex-warp-top flex-flex'>
-                    <image class='flex-warp-left repo-image icon-book' src='../../images/book_32px.png' mode='aspectFit' />
+                    <image class='flex-warp-left repo-image icon-book' src='../../images/book.png' mode='aspectFit' />
                     <text class='flex-warp-right repo-name'>{{item.full_name}}</text>
                 </view>
                 <view class='flex-warp-mid'>
