@@ -25,6 +25,7 @@ starts 做了两分钟缓存
 有原生的 fetch 和 和 Promise 感觉棒棒哒
 
 感觉需要改进的地方：
+
 1. 增加对第三方库的支持，原生的 JS 功能有点弱
 2. 无法跳转外部链接，这个比较麻烦了，说白了只能和微信对接，那就无法替代 H5 了
 3. 文档还可可以的，但是最好要有一个不支持某某东西的列表
@@ -43,16 +44,20 @@ starts 做了两分钟缓存
 gif 图片太大了，就用静态的看吧
 
 这个是 Trending 页面的图
+
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A49%3A32.jpg)
 
 
 这个是登录界面
+
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A50%3A35.jpg)
 
 这个是个人信息和 repos 的图，请原谅我把私有的马赛克了
+
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A52%3A56.jpg)
 
 这个是 startsstarts 页面的图，支持拉下更多
+
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A54%3A21.jpg)
 
 ## LICENSE
