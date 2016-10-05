@@ -56,7 +56,7 @@ gif 图片太大了，就用静态的看吧
 
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A52%3A56.jpg)
 
-这个是 startsstarts 页面的图，支持拉下更多
+这个是 starts 页面的图，支持拉下更多
 
 ![](http://7xtq0y.com1.z0.glb.clouddn.com/2016-10-04-18%3A54%3A21.jpg)
 
